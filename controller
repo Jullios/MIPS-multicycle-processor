@@ -1,0 +1,18 @@
+module controller(input logic clk,
+                  input logic [5:0] op, funct,  input logic zero, 
+                  output logic memtoreg, memwrite,
+                  output logic pcsrc, alusrca,
+                  output logic [1:0] alusrcb,
+                  output logic regdst, regwrite,
+                  output logic jump,
+                  output logic [2:0] alucontrol,
+                  output logic pcwrite, branch, IorD, irwrite);
+  logic [1:0] aluop;
+//  logic branch;
+  
+  maindec md(op, memtoreg, memwrite, branch, alusrc, regdst, regwrite, jump, aluop);
+  
+  aludec ad(funct, aluop, alucontrol);
+  
+  assign pcsrc = branch & zero;
+endmodule
