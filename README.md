@@ -1,2 +1,1 @@
-# MIPS-multicycle-processor
-System Verilog
+# MIPS
